@@ -20,7 +20,7 @@ const skillGroups = [
     skills: [
       { name: "React", icon: Code2, color: "#61DAFB" },
       { name: "Node.js", icon: Terminal, color: "#339933" },
-      { name: "Express", icon: Cpu, color: "#000000" },
+      { name: "Express", icon: Cpu, color: "#8b5cf6" },
       { name: "MongoDB", icon: Globe, color: "#47A248" },
     ],
   },
@@ -29,10 +29,10 @@ const skillGroups = [
     radius: 200,
     duration: 35,
     skills: [
-      { name: "Next.js", icon: Zap, color: "#000000" },
+      { name: "Next.js", icon: Zap, color: "#818cf8" },
       { name: "Tailwind", icon: Layout, color: "#06B6D4" },
       { name: "TypeScript", icon: Smartphone, color: "#3178C6" },
-      { name: "Framer", icon: Layers, color: "#0055FF" },
+      { name: "Framer", icon: Layers, color: "#a78bfa" },
     ],
   },
 ];
@@ -40,8 +40,12 @@ const skillGroups = [
 const Orbit = ({ radius, duration, skills }: any) => {
   return (
     <motion.div
-      className="absolute border border-foreground/5 rounded-full"
-      style={{ width: radius * 2, height: radius * 2 }}
+      className="absolute rounded-full"
+      style={{ 
+        width: radius * 2, 
+        height: radius * 2,
+        border: "1px solid var(--border)",
+      }}
       animate={{ rotate: 360 }}
       transition={{ duration, repeat: Infinity, ease: "linear" }}
     >
@@ -58,14 +62,14 @@ const Orbit = ({ radius, duration, skills }: any) => {
             <motion.div
               animate={{ rotate: -360 }}
               transition={{ duration, repeat: Infinity, ease: "linear" }}
-              className="flex items-center justify-center w-12 h-12 rounded-full border border-foreground/10 bg-background shadow-xl group cursor-help"
+              className="flex items-center justify-center w-12 h-12 rounded-2xl glass glow-hover group cursor-help"
             >
               <skill.icon 
-                size={24} 
+                size={22} 
                 style={{ color: skill.color }} 
                 className="transition-transform group-hover:scale-125"
               />
-              <div className="absolute -top-10 scale-0 group-hover:scale-100 transition-all bg-foreground text-background text-[10px] font-bold px-2 py-1 rounded-md whitespace-nowrap uppercase tracking-wider">
+              <div className="absolute -top-10 scale-0 group-hover:scale-100 transition-all origin-bottom glass text-foreground text-[10px] font-semibold px-3 py-1.5 rounded-lg whitespace-nowrap shadow-lg">
                 {skill.name}
               </div>
             </motion.div>
@@ -78,17 +82,37 @@ const Orbit = ({ radius, duration, skills }: any) => {
 
 export default function OrbitingSkills() {
   return (
-    <section id="skills" className="relative py-32 flex flex-col items-center justify-center overflow-hidden bg-background">
+    <section id="skills" className="relative py-32 flex flex-col items-center justify-center overflow-hidden">
+      {/* Ambient background */}
+      <div className="ambient-orb w-[400px] h-[400px] bg-[var(--gradient-start)] top-1/4 -left-20" />
+      <div className="ambient-orb w-[300px] h-[300px] bg-[var(--gradient-end)] bottom-1/4 -right-20" style={{ animationDelay: "4s" }} />
+
       <div className="text-center space-y-4 mb-24 z-10">
-        <h2 className="text-5xl font-black uppercase tracking-tighter">Stack & Skills</h2>
-        <p className="text-muted-foreground font-medium uppercase tracking-[2px] text-sm italic">
-          High Performance Architecture • Planetary Interaction
+        <motion.p 
+          initial={{ opacity: 0 }}
+          whileInView={{ opacity: 1 }}
+          viewport={{ once: true }}
+          className="text-sm font-semibold text-accent tracking-widest uppercase"
+        >
+          Tech Stack
+        </motion.p>
+        <motion.h2 
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          className="text-4xl md:text-5xl font-bold tracking-tight"
+        >
+          Tools I{" "}
+          <span className="gradient-text">Work With</span>
+        </motion.h2>
+        <p className="text-muted font-medium text-base max-w-md mx-auto">
+          High performance architecture with modern frameworks and libraries
         </p>
       </div>
 
       <div className="relative flex items-center justify-center w-full h-[600px]">
-        {/* Center Logo/Text */}
-        <div className="z-20 w-32 h-32 flex items-center justify-center bg-foreground text-background rounded-full border-4 border-solid border-foreground font-black text-2xl tracking-tighter shadow-2xl animate-pulse">
+        {/* Center Logo */}
+        <div className="z-20 w-28 h-28 flex items-center justify-center rounded-2xl bg-gradient-to-br from-[var(--gradient-start)] to-[var(--gradient-end)] text-white font-bold text-xl tracking-tight shadow-2xl shadow-[var(--gradient-start)]/30">
           STACK
         </div>
 
@@ -103,8 +127,8 @@ export default function OrbitingSkills() {
         ))}
 
         {/* Background Decorative Rings */}
-        <div className="absolute w-[300px] h-[300px] border border-foreground/[0.03] rounded-full pointer-events-none" />
-        <div className="absolute w-[500px] h-[500px] border border-foreground/[0.02] rounded-full pointer-events-none" />
+        <div className="absolute w-[300px] h-[300px] border border-border rounded-full pointer-events-none" />
+        <div className="absolute w-[500px] h-[500px] border border-border rounded-full pointer-events-none" />
       </div>
     </section>
   );
