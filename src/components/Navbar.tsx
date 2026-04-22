@@ -119,7 +119,7 @@ export default function Navbar() {
             transition={{ duration: 0.2 }}
             className="md:hidden mx-4 mt-2"
           >
-            <div className="glass rounded-2xl p-4 space-y-1 shadow-xl">
+            <div className="bg-background/95 backdrop-blur-3xl border border-border rounded-2xl p-4 space-y-1 shadow-2xl">
               {navLinks.map((link) => {
                 const isActive = pathname === link.href;
                 return (
