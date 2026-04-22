@@ -2,6 +2,7 @@
 
 import { motion } from "framer-motion";
 import { GraduationCap, MapPin, Heart, Briefcase } from "lucide-react";
+import Image from "next/image";
 
 export default function About() {
   const education = [
@@ -41,16 +42,26 @@ export default function About() {
           <motion.div 
             initial={{ opacity: 0, x: 30 }}
             animate={{ opacity: 1, x: 0 }}
-            className="text-lg text-muted leading-relaxed space-y-5"
+            className="space-y-6"
           >
-            <p>
-              I&apos;m <span className="font-semibold text-foreground">Ashutosh Dishagat</span>, 
-              a Full-Stack Developer driven by the challenge of bridging complex backend logic with elegant user interfaces.
-            </p>
-            <p>
-              With a background in BCA from TMV and hands-on experience at Edulyt India, I specialize in building 
-              scalable web solutions using the MERN stack and exploring the frontiers of AI integration.
-            </p>
+            <div className="relative w-full max-w-[300px] mx-auto lg:mx-0 aspect-square rounded-3xl overflow-hidden border border-border shadow-2xl">
+              <Image
+                src="/assets/profile.jpg"
+                alt="Ashutosh Dishagat"
+                fill
+                className="object-cover"
+              />
+            </div>
+            <div className="text-lg text-muted leading-relaxed space-y-5">
+              <p>
+                I&apos;m <span className="font-semibold text-foreground">Ashutosh Dishagat</span>, 
+                a Full-Stack Developer driven by the challenge of bridging complex backend logic with elegant user interfaces.
+              </p>
+              <p>
+                With a background in BCA from TMV and hands-on experience at Edulyt India, I specialize in building 
+                scalable web solutions using the MERN stack and exploring the frontiers of AI integration.
+              </p>
+            </div>
           </motion.div>
         </section>
 

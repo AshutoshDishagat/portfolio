@@ -2,8 +2,9 @@
 
 import Link from "next/link";
 import ThemeToggle from "./ThemeToggle";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Menu, X } from "lucide-react";
+import Image from "next/image";
 import { motion, AnimatePresence } from "framer-motion";
 import { usePathname } from "next/navigation";
 
@@ -24,20 +25,39 @@ const socials = [
 
 export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
+  const [scrolled, setScrolled] = useState(false);
   const pathname = usePathname();
 
+  // Handle scroll to update navbar appearance
+  useEffect(() => {
+    const handleScroll = () => {
+      setScrolled(window.scrollY > 20);
+    };
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
+
   return (
-    <nav className="fixed top-0 left-0 w-full z-50">
-      <div className="mx-4 md:mx-8 mt-4">
-        <div className="glass rounded-2xl px-6 py-4 shadow-lg shadow-black/[0.03] dark:shadow-black/20">
+    <nav className={`fixed top-0 left-0 w-full transition-all duration-300 z-[100] ${scrolled ? "py-2" : "py-4"}`}>
+      <div className="mx-4 md:mx-8">
+        <div className={`glass rounded-2xl px-6 py-4 shadow-lg transition-all duration-300 ${
+          scrolled 
+            ? "shadow-black/10 dark:shadow-black/40 border-accent/20 bg-background/80 backdrop-blur-xl" 
+            : "shadow-black/[0.03] dark:shadow-black/20"
+        }`}>
           <div className="max-w-7xl mx-auto flex items-center justify-between">
             
             {/* Logo */}
             <Link href="/" className="flex items-center space-x-2 group">
-              <div className="w-8 h-8 rounded-lg bg-gradient-to-br from-[var(--gradient-start)] to-[var(--gradient-end)] flex items-center justify-center text-white font-black text-sm transition-transform group-hover:scale-110 group-hover:rotate-3">
-                A
+              <div className="relative w-8 h-8 rounded-lg overflow-hidden transition-transform group-hover:scale-110 group-hover:rotate-3 border border-border">
+                <Image
+                  src="/assets/profile.jpg"
+                  alt="Ashutosh Profile"
+                  fill
+                  className="object-cover"
+                />
               </div>
-              <span className="text-lg font-bold tracking-tight hidden sm:block">
+              <span className="text-lg font-bold tracking-tight">
                 Ashutosh
               </span>
             </Link>
