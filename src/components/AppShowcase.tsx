@@ -53,8 +53,7 @@ export default function AppShowcase() {
           className="pt-6 w-full sm:w-auto"
         >
           <Link
-            href="https://github.com/AshutoshDishagat/portfolio/raw/main/public/strive-app-release.apk"
-            download="Strive-App.apk"
+            href="https://github.com/AshutoshDishagat/Strive-/releases/latest/download/app-debug.apk"
             className="group flex items-center justify-center space-x-3 bg-foreground text-background px-8 py-4 sm:px-10 sm:py-5 rounded-full font-bold text-lg hover:scale-105 active:scale-95 transition-all duration-300 w-full sm:w-auto shadow-2xl hover:shadow-[0_0_40px_rgba(0,0,0,0.1)] dark:hover:shadow-[0_0_40px_rgba(255,255,255,0.1)]"
           >
             <Download size={22} className="group-hover:-translate-y-1 transition-transform" />
