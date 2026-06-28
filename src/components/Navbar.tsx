@@ -106,13 +106,14 @@ export default function Navbar() {
                 ))}
               </div>
 
-              <Link
-                href="/resume.pdf"
+              <a
+                href="https://drive.google.com/file/d/1l7Kwvv__F-wNzWJhw2u_tuiWgtiAfltX/view?usp=sharing"
                 target="_blank"
+                rel="noopener noreferrer"
                 className="hidden md:flex items-center space-x-2 px-4 py-2 text-sm font-semibold rounded-xl bg-gradient-to-r from-[var(--gradient-start)] to-[var(--gradient-end)] text-white hover:opacity-90 transition-opacity shadow-lg shadow-[var(--gradient-start)]/20"
               >
                 <span>Resume</span>
-              </Link>
+              </a>
 
               <ThemeToggle />
               
@@ -165,13 +166,14 @@ export default function Navbar() {
                     </a>
                   ))}
                 </div>
-                <Link
-                  href="/resume.pdf"
+                <a
+                  href="https://drive.google.com/file/d/1l7Kwvv__F-wNzWJhw2u_tuiWgtiAfltX/view?usp=sharing"
                   target="_blank"
+                  rel="noopener noreferrer"
                   className="px-4 py-2 text-xs font-semibold rounded-xl bg-gradient-to-r from-[var(--gradient-start)] to-[var(--gradient-end)] text-white"
                 >
                   Resume
-                </Link>
+                </a>
               </div>
             </div>
           </motion.div>

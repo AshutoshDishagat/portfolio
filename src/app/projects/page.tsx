@@ -91,11 +91,12 @@ export default function Projects() {
           {projects.map((project, i) => (
             <motion.div
               key={project.title}
+              id={project.title.toLowerCase()}
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: i * 0.1 }}
-              className="group relative glass rounded-2xl p-8 md:p-10 hover:bg-surface-hover transition-all duration-500 glow-hover overflow-hidden"
+              className="group relative glass rounded-2xl p-8 md:p-10 hover:bg-surface-hover transition-all duration-500 glow-hover overflow-hidden scroll-mt-24"
             >
               <div className="relative z-10 space-y-5">
                 <div className="flex items-start justify-between">

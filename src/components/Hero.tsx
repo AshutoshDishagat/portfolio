@@ -3,7 +3,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import { motion } from "framer-motion";
-import { ArrowRight, Sparkles } from "lucide-react";
+import { ArrowRight, Sparkles, Download } from "lucide-react";
 
 export default function Hero() {
   return (
@@ -69,21 +69,34 @@ export default function Hero() {
             transition={{ duration: 0.6, delay: 0.7 }}
             className="flex flex-wrap items-center gap-4 pt-2"
           >
-            <Link 
-              href="/resume.pdf" 
-              target="_blank"
-              className="group relative px-8 py-4 bg-gradient-to-r from-[var(--gradient-start)] to-[var(--gradient-end)] text-white font-semibold text-base rounded-2xl hover:shadow-xl hover:shadow-[var(--gradient-start)]/25 transition-all duration-300 hover:-translate-y-0.5 overflow-hidden"
-            >
-              <span className="relative z-10 flex items-center space-x-2">
-                <span>View Resume</span>
-                <ArrowRight size={18} className="group-hover:translate-x-1 transition-transform" />
-              </span>
-              <div className="absolute inset-0 bg-gradient-to-r from-[var(--gradient-mid)] to-[var(--gradient-start)] opacity-0 group-hover:opacity-100 transition-opacity duration-300 rounded-2xl" />
-            </Link>
+            <div className="flex items-center gap-1 bg-foreground/[0.03] border border-border p-1 rounded-2xl backdrop-blur-md">
+              <a 
+                href="https://drive.google.com/file/d/1l7Kwvv__F-wNzWJhw2u_tuiWgtiAfltX/view?usp=sharing" 
+                target="_blank"
+                rel="noopener noreferrer"
+                className="group relative px-6 py-3 bg-gradient-to-r from-[var(--gradient-start)] to-[var(--gradient-end)] text-white font-semibold text-sm rounded-xl hover:shadow-lg hover:shadow-[var(--gradient-start)]/20 transition-all duration-300 overflow-hidden"
+              >
+                <span className="relative z-10 flex items-center space-x-2">
+                  <span>View Resume</span>
+                  <ArrowRight size={16} className="group-hover:translate-x-1 transition-transform" />
+                </span>
+                <div className="absolute inset-0 bg-gradient-to-r from-[var(--gradient-mid)] to-[var(--gradient-start)] opacity-0 group-hover:opacity-100 transition-opacity duration-300 rounded-xl" />
+              </a>
+              
+              <a 
+                href="https://docs.google.com/uc?export=download&id=1l7Kwvv__F-wNzWJhw2u_tuiWgtiAfltX" 
+                target="_blank"
+                rel="noopener noreferrer"
+                className="group/dl p-3 hover:bg-foreground/5 text-muted hover:text-foreground rounded-xl transition-all duration-300 flex items-center justify-center"
+                title="Download Resume PDF"
+              >
+                <Download size={16} className="group-hover/dl:scale-110 transition-transform" />
+              </a>
+            </div>
             
             <Link 
               href="/contact" 
-              className="px-8 py-4 font-semibold text-base rounded-2xl border border-border hover:bg-foreground/5 transition-all duration-300 hover:-translate-y-0.5"
+              className="px-8 py-3.5 font-semibold text-sm rounded-2xl border border-border hover:bg-foreground/5 transition-all duration-300"
             >
               Say Hello
             </Link>

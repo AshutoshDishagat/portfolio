@@ -1,88 +1,54 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { Download, Smartphone } from "lucide-react";
+import { ArrowUpRight } from "lucide-react";
 import Link from "next/link";
-import Image from "next/image";
 
 export default function AppShowcase() {
   return (
-    <section className="relative w-full py-24 sm:py-32 flex justify-center overflow-hidden bg-background text-foreground px-6 transition-colors duration-500">
-      {/* Background radial gradient to give a subtle premium glow */}
-      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-indigo-500/10 rounded-full blur-[120px] pointer-events-none" />
-
-      <div className="max-w-4xl w-full flex flex-col items-center text-center relative z-10 space-y-8">
+    <motion.div
+      initial={{ opacity: 0, y: 20 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true }}
+      transition={{ duration: 0.6 }}
+      className="w-full"
+    >
+      <div className="glass rounded-2xl p-4 md:p-6 flex flex-col sm:flex-row items-center justify-between gap-4 shadow-xl border border-border relative overflow-hidden group hover:border-accent/30 transition-all duration-300">
+        {/* Subtle background glow */}
+        <div className="absolute inset-0 bg-gradient-to-r from-accent/5 via-transparent to-accent/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none" />
         
-        {/* Pill Label */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.5 }}
-          className="inline-flex items-center space-x-2 px-4 py-1.5 rounded-full border border-border bg-foreground/5 backdrop-blur-md"
-        >
-          <Smartphone size={14} className="text-foreground" />
-          <span className="text-[10px] sm:text-xs font-bold tracking-[0.2em] text-foreground/80 uppercase">
-            Android Productivity App
-          </span>
-        </motion.div>
+        {/* Name and Logo info */}
+        <div className="flex items-center space-x-4 relative z-10 w-full sm:w-auto">
+          {/* Styled app logo */}
+          <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-cyan-400 via-indigo-500 to-violet-500 flex items-center justify-center shadow-lg shadow-indigo-500/20 text-white font-extrabold text-xl shrink-0 group-hover:scale-105 transition-transform duration-300">
+            S
+          </div>
+          <div className="text-left">
+            <div className="flex items-center gap-2">
+              <h4 className="font-bold text-foreground text-base sm:text-lg">
+                Strive
+              </h4>
+              <span className="text-[10px] px-2 py-0.5 rounded-full bg-accent/10 text-accent font-semibold border border-accent/20">
+                Android App
+              </span>
+            </div>
+            <p className="text-xs sm:text-sm text-muted font-medium mt-0.5">
+              A comprehensive focus and productivity companion designed to block distractions and track study sessions.
+            </p>
+          </div>
+        </div>
 
-        {/* Heading */}
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.6, delay: 0.1 }}
-          className="space-y-4"
-        >
-          <h2 className="text-4xl sm:text-5xl md:text-6xl font-extrabold tracking-tight text-foreground leading-tight">
-            Meet <span className="text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 via-indigo-400 to-violet-400">Strive</span>.
-          </h2>
-          <p className="text-muted text-lg sm:text-xl max-w-2xl mx-auto font-medium">
-            A comprehensive focus and productivity tool designed to help you lock in and get things done. 
-            Block distractions and track your study sessions with ease.
-          </p>
-        </motion.div>
-
-        {/* Action Buttons */}
-        <motion.div
-          initial={{ opacity: 0, scale: 0.95 }}
-          whileInView={{ opacity: 1, scale: 1 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.5, delay: 0.3 }}
-          className="pt-6 w-full sm:w-auto"
-        >
+        {/* View Project Action Button */}
+        <div className="relative z-10 shrink-0 w-full sm:w-auto flex justify-end">
           <Link
-            href="https://github.com/AshutoshDishagat/Strive-/releases/download/v1.0.0/app-debug.apk"
-            className="group flex items-center justify-center space-x-3 bg-foreground text-background px-8 py-4 sm:px-10 sm:py-5 rounded-full font-bold text-lg hover:scale-105 active:scale-95 transition-all duration-300 w-full sm:w-auto shadow-2xl hover:shadow-[0_0_40px_rgba(0,0,0,0.1)] dark:hover:shadow-[0_0_40px_rgba(255,255,255,0.1)]"
+            href="/projects#strive"
+            className="group/btn flex items-center justify-center space-x-2 bg-foreground text-background px-6 py-3 rounded-xl font-bold text-sm hover:scale-102 active:scale-98 transition-all duration-300 w-full sm:w-auto shadow-md hover:shadow-lg"
           >
-            <Download size={22} className="group-hover:-translate-y-1 transition-transform" />
-            <span>Download for Android</span>
+            <span>View Project</span>
+            <ArrowUpRight size={16} className="group-hover/btn:translate-x-0.5 group-hover/btn:-translate-y-0.5 transition-transform" />
           </Link>
-          <p className="mt-4 text-xs font-medium tracking-wide text-muted uppercase">
-            Requires Android 8.0 or higher
-          </p>
-        </motion.div>
-
-        {/* Provided Mockup Image */}
-        <motion.div
-          initial={{ opacity: 0, y: 50 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.8, delay: 0.5 }}
-          className="mt-16 sm:mt-24 w-full max-w-4xl relative drop-shadow-2xl flex justify-center"
-        >
-          <Image
-            src="/strive-mockup.jpg"
-            alt="Strive App Showcase"
-            width={1200}
-            height={800}
-            className="w-full h-auto object-contain rounded-xl md:rounded-[40px]"
-            priority
-          />
-        </motion.div>
-
+        </div>
       </div>
-    </section>
+    </motion.div>
   );
 }

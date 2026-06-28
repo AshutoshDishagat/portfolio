@@ -6,10 +6,13 @@ import AppShowcase from "@/components/AppShowcase";
 export default function Home() {
   return (
     <div className="flex flex-col flex-1 bg-background font-sans overflow-x-hidden">
-      <AppShowcase />
       <Hero />
       <OrbitingSkills />
+      <div className="max-w-7xl mx-auto w-full px-6 md:px-12 pb-24 relative z-10">
+        <AppShowcase />
+      </div>
       <HireMe />
     </div>
   );
 }
+
