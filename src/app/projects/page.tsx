@@ -1,7 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { ExternalLink, Code2, Cpu, Globe, Rocket, ArrowUpRight } from "lucide-react";
+import { ExternalLink, Code2, Cpu, Globe, Rocket, ArrowUpRight, Download } from "lucide-react";
 import { GithubIcon } from "@/components/Icons";
 import Link from "next/link";
 
@@ -11,6 +11,7 @@ const projects = [
     description: "Flutter-based productivity application focused on focus-mode and app blocking for students.",
     tech: ["Flutter", "Dart", "Firebase", "Android Studio"],
     github: "https://github.com/AshutoshDishagat/Strive-",
+    download: "https://github.com/AshutoshDishagat/Strive-/releases/download/v1.0.0/app-debug.apk",
     icon: Rocket,
     color: "#f43f5e",
   },
@@ -120,15 +121,29 @@ export default function Projects() {
                 <p className="text-base text-muted leading-relaxed">
                   {project.description}
                 </p>
-                <Link 
-                  href={project.github} 
-                  target="_blank" 
-                  className="inline-flex items-center space-x-2 text-sm font-semibold text-accent hover:underline group/link"
-                >
-                  <GithubIcon className="w-4 h-4" />
-                  <span>Source Code</span>
-                  <ArrowUpRight size={14} className="group-hover/link:translate-x-0.5 group-hover/link:-translate-y-0.5 transition-transform" />
-                </Link>
+                <div className="flex flex-wrap items-center gap-6">
+                  <Link 
+                    href={project.github} 
+                    target="_blank" 
+                    className="inline-flex items-center space-x-2 text-sm font-semibold text-accent hover:underline group/link"
+                  >
+                    <GithubIcon className="w-4 h-4" />
+                    <span>Source Code</span>
+                    <ArrowUpRight size={14} className="group-hover/link:translate-x-0.5 group-hover/link:-translate-y-0.5 transition-transform" />
+                  </Link>
+
+                  {project.download && (
+                    <Link 
+                      href={project.download} 
+                      target="_blank" 
+                      className="inline-flex items-center space-x-2 text-sm font-semibold text-accent hover:underline group/link"
+                    >
+                      <Download size={14} />
+                      <span>Download APK</span>
+                      <ArrowUpRight size={14} className="group-hover/link:translate-x-0.5 group-hover/link:-translate-y-0.5 transition-transform" />
+                    </Link>
+                  )}
+                </div>
               </div>
             </motion.div>
           ))}
